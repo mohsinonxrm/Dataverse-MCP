@@ -2,34 +2,11 @@
 In this lab, you will learn how to setup a Dataverse environment so that you can use the Dataverse MCP Server. Also, you will learn how to install the Dataverse Model Context Protocol server.
 
 ## 🌎 Provision Dataverse environment
-Open `Terminal` or `PowerShell` on your machine in the `Run as Administrator` mode. Press the `Windows key` and type `Terminal`. Right-click and select **Run as Administrator**.
+To use these labs, you need to make sure to have created an environment with Dataverse enabled. You can create an environment via [Power Platform Admin Center](https://aka.ms/ppac). When creating the environment, make sure to set the `Add a Dataverse data store?` toggle to **Yes**.
 
-Get the Power Apps admin module by running the following command in the terminal:
+After the creation of the environment, select the cog wheel (⚙️) at the top right and select **Session details**. Copy the Tenant ID and store it somewhere safe - you will need this later.
 
-```powershell
-Install-Module -Name Microsoft.PowerApps.Administration.PowerShell
-```
-
-After completing this step, run following command (you can stay in the same Terminal/PowerShell window). You need to pass LocationName as "unitedstatesfirstrelease" and provide a friendly name for your environment. You will be prompted for your credentials, please remember which one you use to complete this step. You will need it for the configuration of the environment.
-
-```powershell
-New-AdminPowerAppEnvironment -DisplayName '<friendly name>' -Location unitedstatesfirstrelease -EnvironmentSku Trial -ProvisionDatabase
-```
-
-At successful run, you will see a list of attributes of your newly provisioned environment. This typically includes EnvironmentName, DisplayName, Location (expected value is unitedstatesfirstrelease), CommonDataServiceDatabaseProvisioningState (expected value is succeeded).
-
-![Created environment](./assets/create-environment.png)
-
-> [!IMPORTANT]
-> Please note both EnvironmentName, DisplayName & Tenant ID (Which is part of the created by column) for later steps.
-
-## ⚙️ Configuring your Dataverse environment
-You may need to upgrade the version of the "Microsoft Dynamics 365 – PowerAIExtensions" solution in the environment.
-
-1.	Navigate to the Power Platform Admin Center at https://admin.powerplatform.microsoft.com/
-1.	Select your environment from the environments list.
-1.	Select Resources > Dynamics 365 Apps from the top menu (Don't select Dynamics 365 Apps on the left menu)
-1.	Next to "Microsoft Dynamics 365 – PowerAIExtensions" if you see an "Update Available" link, select it and upgrade the solution.
+Wait until the environment is created before you move on to the next step.
 
 ## ➕ Create a connection to Dataverse on your environment
 Navigate to https://make.powerautomate.com – just open another tab in the browser with Dataverse maker portal. If necessary, change to the correct environment by selecting it from the top right again. 
@@ -59,13 +36,13 @@ Select your user to complete. You will see something like this:
 ![Connection created](./assets/connection-created.png)
 
 > [!TIP]
-> Note the user name in the connection Name – should be same as one you used already to provision Dataverse.
+> Note the user name in the Connection Name – should be same as one you used already to provision Dataverse.
 
 Select the username to open the connection.
 
 ![Select username](./assets/select-username.png)
 
-Copy the Connection URL from the address bar and save it somewhere safe.
+Copy the Connection URL from the address bar and store it somewhere safe - you will need this later too.
 
 ![Copy connection URL](./assets/connection-url.png)
 
