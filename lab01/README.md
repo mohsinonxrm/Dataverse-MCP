@@ -4,64 +4,35 @@ In this lab, you will learn how to setup a Dataverse environment so that you can
 ## 🌎 Provision Dataverse environment
 To use these labs, you need to make sure to have created an environment with Dataverse enabled. You can create an environment via [Power Platform Admin Center](https://aka.ms/ppac). When creating the environment, make sure to set the `Add a Dataverse data store?` toggle to **Yes**.
 
-After the creation of the environment, select the cog wheel (⚙️) at the top right and select **Session details**. Copy the Tenant ID and store it somewhere safe - you will need this later.
+After the creation of the environment, go to [https://make.powerapps.com](https://make.powerapps.com), select the environment you just created, select the cog wheel (⚙️) at the top right and select **Session details**. Copy the Tenant ID and store it somewhere safe - you will need this later.
 
 Wait until the environment is created before you move on to the next step.
 
 ## ➕ Create a connection to Dataverse on your environment
-Navigate to https://make.powerautomate.com – just open another tab in the browser with Dataverse maker portal. If necessary, change to the correct environment by selecting it from the top right again. 
 
-Select `More` and pin `Connections` by selecting the thumbtack to make sure the connections are pinned to the left navigation.
+1. Go to [Power Automate](https://make.powerautomate.com). If necessary, change to the correct environment by selecting it from the top right.
+1. Select **Connections** on the left navigation pane, and then select **+ New connection** on the command bar.
+1. Type *Dataverse* in the search box, and then select the green colored **Microsoft Dataverse** connector.
 
-![Pin connections](./assets/pin-connections.png)
+    ![](./assets/power-automate-connector.png)
 
-Select `Connections` on the left navigation.
+1. Complete the instructions on your screen.
+1. Note the user name in the connection **Name**, this should be the same name that you used to create the environment earlier.
+1. Select the connection to open it and copy the entire URL from the browser and save it. You need this URL for Claude desktop and VS Code MCP configuration.
 
-![Connections](./assets/connections.png)
-
-Click **+ New connection** at the top, type `Dataverse` into the search box
-
-![New connection](./assets/new-connection.png)
-
-Select the one with the green Dataverse icon. 
-
-![Create connection Dataverse](./assets/create-connection-dataverse.png)
-
-Select create in the pop up:
-
-![Create Dataverse](./assets/create-dataverse.png)
-
-Select your user to complete. You will see something like this: 
-
-![Connection created](./assets/connection-created.png)
-
-> [!TIP]
-> Note the user name in the Connection Name – should be same as one you used already to provision Dataverse.
-
-Select the username to open the connection.
-
-![Select username](./assets/select-username.png)
-
-Copy the Connection URL from the address bar and store it somewhere safe - you will need this later too.
-
-![Copy connection URL](./assets/connection-url.png)
+    ![](./assets/copy-entire-browser-url.png)
 
 ## ⚙️ Configure Dataverse MCP
-First off, please install .NET SDK 8.0 with this Power Shell command.
 
-1.	Install the .NET SDK 8.0 either from Downloads  or with this Power Shell command.
+These steps install the Dataverse MCP server local proxy that is used by the MCP client, such as Claude desktop or VS Code GitHub Copilot.
 
-    ```powershell
-    winget install Microsoft.DotNet.SDK.8
-    ```
+1. Install the .NET SDK 8.0 either from Downloads or with this PowerShell command.
 
-Go back to the Terminal window (or start new one as administrator) and run following command:
+   `winget install Microsoft.DotNet.SDK.8`
 
-```powershell
-dotnet tool install --global --add-source https://api.nuget.org/v3/index.json Microsoft.PowerPlatform.Dataverse.MCP
-```
+1. In the Terminal window you opened earlier, run this command to install the Microsoft.PowerPlatform.Dataverse.MCP local proxy.
 
-![dotnet tool installed successfully](./assets/dotnet-tool-install.png)
+   `dotnet tool install --global --add-source https://api.nuget.org/v3/index.json Microsoft.PowerPlatform.Dataverse.MCP`
 
 Great job! You’ve successfully completed configuration of Dataverse MCP server!
 
